@@ -8,17 +8,23 @@ class AddressBook:
         self.name = name
         self.address = address
 
-
-class Contact(AddressBook):
+class AddContact(AddressBook):
     def __init__(self, name, address):
         AddressBook.__init__(self, name, address)
-        ab = {name: address}
-        f = open(bookfile, 'w')
-        pickle.dump(ab, f)
-        f.close()
+        ab[name] = address
 
-adr = Contact('Tom', 'tb@.com')
+ab = {}
+
+adr = AddContact('Tom', 'dsad@mail.com')
+adr = AddContact('Dom', 'sad@mail.com')
+adr = AddContact('Rom', 'rrr@mail.com')
+adr = AddContact('Kom', 'kkk@mail.com')
+
+f = open(bookfile, 'wb')
+pickle.dump(ab, f)
+f.close()
 
 f = open(bookfile, 'rb')
 contacts = pickle.load(f)
+
 print(contacts)
