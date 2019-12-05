@@ -20,6 +20,8 @@ adr = AddContact('Dom', 'sad@mail.com')
 adr = AddContact('Rom', 'rrr@mail.com')
 adr = AddContact('Kom', 'kkk@mail.com')
 
+del ab['Rom']
+
 f = open(bookfile, 'wb')
 pickle.dump(ab, f)
 f.close()
@@ -27,4 +29,5 @@ f.close()
 f = open(bookfile, 'rb')
 contacts = pickle.load(f)
 
-print(contacts)
+for name, address in ab.items():
+    print('Контакт {0} с адресом {1}'.format(name, address))
